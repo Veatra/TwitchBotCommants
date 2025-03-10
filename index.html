@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <!-- Generate a random percentage and emote -->
+  <!-- Generate a random percentage and emote with weighted chances -->
   <script>
     const options = [
-      { min: 91, max: 100, emote: 'nightlyFredCheer' },
-      { min: 81, max: 90, emote: 'nightlyFredtheFashionable' },
-      { min: 71, max: 80, emote: 'nightlyForg' },
-      { min: 61, max: 70, emote: 'nightlyPat' },
-      { min: 51, max: 60, emote: 'nightlyFLOWER' },
-      { min: 41, max: 50, emote: 'nightlyPout' },
-      { min: 31, max: 40, emote: 'nightlyNotLikeThis' },
-      { min: 21, max: 30, emote: 'nightlyCry' },
-      { min: 11, max: 20, emote: 'nightlyAllGood' },
-      { min: 1, max: 10, emote: 'nightlyWHEEZE' }
+      { weight: 100, emote: 'nightlyFredCheer' },
+      { weight: 100, emote: 'nightlyFredtheFashionable' },
+      { weight: 100, emote: 'nightlyForg' },
+      { weight: 100, emote: 'nightlyPat' },
+      { weight: 100, emote: 'nightlyFLOWER' },
+      { weight: 100, emote: 'nightlyPout' },
+      { weight: 100, emote: 'nightlyNotLikeThis' },
+      { weight: 100, emote: 'nightlyCry' },
+      { weight: 100, emote: 'nightlyAllGood' },
+      { weight: 100, emote: 'nightlyWHEEZE' }
     ];
 
-    const pick = options[Math.floor(Math.random() * options.length)];
-    const percent = Math.floor(Math.random() * (pick.max - pick.min + 1)) + pick.min;
-    document.write(`${percent}% ${pick.emote}`);
+    // Function to pick an option based on weights
+    function pickWeightedOption(options) {
+      const totalWeight = options.reduce((sum, option) => sum + option.weight, 0);
+      let randomNum = Math.floor(Math.random() * totalWeight);
+      for (let i = 0; i < options.length; i++) {
+        randomNum -= options[i].weight;
+        if (randomNum < 0) {
+          return options[i];
+        }
+      }
+    }
+
+    const pickedOption = pickWeightedOption(options);
+    const percent = Math.floor(Math.random() * 100) + 1;
+    document.write(`${percent}% ${pickedOption.emote}`);
   </script>
 </body>
 </html>
+
