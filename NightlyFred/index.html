@@ -4,33 +4,36 @@
   <!-- Generate a random percentage and outputline with weighted chances -->
   <script>
     const options = [
-      { weight: 10000, outputline: 'nightlyFredCheer' },
-      { weight: 100, outputline: 'nightlyFredtheFashionable' },
-      { weight: 100, outputline: 'nightlyForg' },
-      { weight: 100, outputline: 'nightlyPat' },
-      { weight: 100, outputline: 'nightlyFLOWER' },
-      { weight: 100, outputline: 'nightlyPout' },
-      { weight: 100, outputline: 'nightlyNotLikeThis' },
-      { weight: 100, outputline: 'nightlyCry' },
-      { weight: 100, outputline: 'nightlyAllGood' },
-      { weight: 100, outputline: 'nightlyWHEEZE' }
+      { min: 91, max: 100, outputline: 'nightlyFredCheer' },
+      { min: 81, max: 90, outputline: 'nightlyFredtheFashionable' },
+      { min: 71, max: 80, outputline: 'nightlyForg' },
+      { min: 61, max: 68, outputline: 'nightlyPat' },
+      { min: 69, max: 69, outputline: 'nightlyKek' },
+      { min: 70, max: 70, outputline: 'nightlyPat' },
+      { min: 51, max: 60, outputline: 'nightlyFLOWER' },
+      { min: 41, max: 50, outputline: 'nightlyPout' },
+      { min: 31, max: 40, outputline: 'nightlyNotLikeThis' },
+      { min: 21, max: 30, outputline: 'nightlyCry' },
+      { min: 11, max: 20, outputline: 'nightlyAllGood' },
+      { min: 1, max: 10, outputline: 'nightlyWHEEZE' }
     ];
 
-    // Function to pick an option based on weights
-    function pickWeightedOption(options) {
-      const totalWeight = options.reduce((sum, option) => sum + option.weight, 0);
-      let randomNum = Math.floor(Math.random() * totalWeight);
+    // Function to pick an option based on the random percentage
+    function pickOptionByPercent(percent) {
       for (let i = 0; i < options.length; i++) {
-        randomNum -= options[i].weight;
-        if (randomNum < 0) {
+        if (percent >= options[i].min && percent <= options[i].max) {
           return options[i];
         }
       }
     }
 
-    const pickedOption = pickWeightedOption(options);
-    document.write(`${pickedOption.outputline}`);
+    // Generate a random percentage between 1 and 100
+    const percent = Math.floor(Math.random() * 100) + 1;
+
+    // Pick the corresponding outputline based on the percentage
+    const pickedOption = pickOptionByPercent(percent);
+
+    document.write(`${percent}% ${pickedOption.outputline}`);
   </script>
 </body>
 </html>
-
