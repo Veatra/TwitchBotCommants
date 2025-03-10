@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <!-- Generate a random percentage and emote with weighted chances -->
+  <!-- Generate a random percentage and outputline with weighted chances -->
   <script>
     const options = [
-      { weight: 10000, emote: 'nightlyFredCheer' },
-      { weight: 100, emote: 'nightlyFredtheFashionable' },
-      { weight: 100, emote: 'nightlyForg' },
-      { weight: 100, emote: 'nightlyPat' },
-      { weight: 100, emote: 'nightlyFLOWER' },
-      { weight: 100, emote: 'nightlyPout' },
-      { weight: 100, emote: 'nightlyNotLikeThis' },
-      { weight: 100, emote: 'nightlyCry' },
-      { weight: 100, emote: 'nightlyAllGood' },
-      { weight: 100, emote: 'nightlyWHEEZE' }
+      { weight: 10000, outputline: 'nightlyFredCheer' },
+      { weight: 100, outputline: 'nightlyFredtheFashionable' },
+      { weight: 100, outputline: 'nightlyForg' },
+      { weight: 100, outputline: 'nightlyPat' },
+      { weight: 100, outputline: 'nightlyFLOWER' },
+      { weight: 100, outputline: 'nightlyPout' },
+      { weight: 100, outputline: 'nightlyNotLikeThis' },
+      { weight: 100, outputline: 'nightlyCry' },
+      { weight: 100, outputline: 'nightlyAllGood' },
+      { weight: 100, outputline: 'nightlyWHEEZE' }
     ];
 
     // Function to pick an option based on weights
@@ -29,8 +29,7 @@
     }
 
     const pickedOption = pickWeightedOption(options);
-    const percent = Math.floor(Math.random() * 100) + 1;
-    document.write(` test ${percent}% ${pickedOption.emote}`);
+    document.write(`${pickedOption.outputline}`);
   </script>
 </body>
 </html>
